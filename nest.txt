@@ -1,0 +1,165 @@
+src
+   >coffees
+      >dto
+          >create-coffee.dto.ts
+      >entities
+          
+      >coffees.controller.ts
+      >coffees.controller.spec.ts
+      >coffees.module.ts
+      >coffees.service.ts
+      >coffees.service.spec.ts
+   
+   >app.controller.ts
+   >app.controller.spec.ts
+   >app.module.ts
+   >app.service.ts
+   >main.ts
+
+        
+
+
+npm i -g @nestjs/cli
+
+nest --version
+
+nest --help
+
+nest new
+cd /project
+npm run start
+npm run start:dev
+
+
+nest generate controller
+(or:  nest g co)
+nest g co --no-spec    
+
+
+nest generate controller modules/abc
+nest generate controller modules/abc  --dry-run
+ 
+
+nest generate service
+
+
+nest generate module coffee
+
+
+nest generate class coffees/dto/create-coffee.dto --no-spec
+
+
+
+
+
+validationPipes --> makes sure that everything going into server, is compatible with dtos
+
+npm i class-validator  class-transformer
+npm i @nestjs/mapped-types   ----> it helps to use other dtos in other dto and its validation rules
+
+
+
+
+
+ npm i @nestjs/typeorm typeorm pg
+
+
+
+
+nest generate class coffees/entities/flavor.entity --no-spec
+
+
+
+
+----typeOrm migration
+create a "ormconfig.js" file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---nest config
+npm i @nestjs/config      //for loading and parsing config files
+
+
+	
+//lets make sure any env var are validated 
+npm i  joi
+npm i --save-dev @types/joi
+
+
+
+
+//configuration namespaces and partial registeration
+
+
+
+
+exception-filters are for handling unhandled exceptions
+
+
+pipes are for handling 2 things: 
+   "transformation": transform input data to the desired output
+   "validation": evaluate input data and if not valid, throwing an exception
+
+
+guards are for determine whether a given req meets certain condition, 
+like authentication, authorization, roles, ACLs, exception
+
+
+Intercepters are for 
+   1- binding extra logic before or after method execution
+   2- transform the result returned from a method
+   3- extend basic method behavior
+   4- even completely override a method behavior
+
+
+
+there are 3 different ways of binding ("filters", "gaurds", "interceptors") to our route handlers
+   1- Global   //(main.ts =>  we cant inject dependencies) & (*.module.ts as provider with APP_PIPE ... tokens)
+   2- Controller  //*.controller.ts as @UsePipes(), @UseGaurds(), UseIntercepters(), @UseFilters()
+   3- Method 
+   4- Param("pipes only")
+
+////always try to use classes instead of its instances whenever possible,
+      this reduces memory-usage
+
+
+
+
+- Catching exceptions with filters:
+   when an exception is not handled by our application, its automatically caught by this layer 
+   which sends the appropiate response
+
+
+nest generate filter common/filters/http-exception
+
+
+
+- Gaurds 
+
+nest generate guard common/guards/api-key
+
+
+
+
+55
+
